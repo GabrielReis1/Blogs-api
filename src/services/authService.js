@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+const jwtUtils = require('../utils/jwtUtil');
 const { User } = require('../models');
 
 const login = async (email, password) => {
@@ -15,7 +15,7 @@ const login = async (email, password) => {
     email: user.email,
     image: user.image,
   };
-  const token = jwt.sign(payload, process.env.JWT_SECRET);
+  const token = jwtUtils.createToken(payload);
 
   return token;
 };
