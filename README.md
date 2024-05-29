@@ -17,12 +17,19 @@ Este projeto consiste no desenvolvimento de uma API e um banco de dados para a p
 - MYSQL (ou outro banco de dados SQL de sua escolha)
 - JWT (JSON Web Tokens) para autenticação
 
-## Orientações
+## Instalação e Execução
+1. Clone este repositório: `git clone git@github.com:GabrielReis1/Blogs-api.git`
+2. Instale as dependências: `npm install`
+3. Configure o banco de dados no arquivo `.env`:
+    ```
+    DB_HOST=localhost
+    DB_USER=seu-usuario
+    DB_PASS=sua-senha
+    DB_NAME=nome-do-banco
+    JWT_SECRET=sua-chave-secreta
+    ```
 
-<details>
-  <summary><strong>🐋 Rodando no Docker vs Localmente</strong></summary>
-  
-  ## 👉 Com Docker
+## Orientações
  
   **:warning: Antes de começar, seu docker-compose precisa estar na versão 1.29 ou superior. [Veja aqui](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04-pt) ou [na documentação](https://docs.docker.com/compose/install/) como instalá-lo. No primeiro artigo, você pode substituir onde está com `1.26.0` por `1.29.2`.**
 
@@ -50,32 +57,6 @@ Este projeto consiste no desenvolvimento de uma API e um banco de dados para a p
   - ✨ **Dica:** A extensão `Remote - Containers` (que estará na seção de extensões recomendadas do VS Code) é indicada para que você possa desenvolver sua aplicação no container Docker direto no VS Code, como você faz com seus arquivos locais.
 
   <br />
-  
-  ## 👉 Sem Docker
-
-  > :information_source: Instale as dependências [**Caso existam**] com `npm install`
-  
-  - Lembre-se de usar o prefixo `env $(cat .env)` ao rodar os comandos localmente para carregar as variáveis de ambiente do arquivo `.env`. Por exemplo:
-  
-    ```bash
-    env $(cat .env) npm run dev
-    ```
-  
-  - **:warning: Atenção:** Não rode o comando `npm audit fix`! Ele atualiza várias dependências do projeto, e essa atualização gera conflitos com o avaliador.
-</details>
-
-## Instalação e Execução
-1. Clone este repositório: `git clone git@github.com:GabrielReis1/Blogs-api.git`
-2. Instale as dependências: `npm install`
-3. Configure o banco de dados no arquivo `.env`:
-    ```
-    DB_HOST=localhost
-    DB_USER=seu-usuario
-    DB_PASS=sua-senha
-    DB_NAME=nome-do-banco
-    JWT_SECRET=sua-chave-secreta
-    ```
-4. Execute as migrações do Sequelize para criar as tabelas no banco de dados: `npx sequelize db:migrate`
 
 ## Endpoints
 ### Usuários
