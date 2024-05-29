@@ -28,13 +28,7 @@ Este projeto consiste no desenvolvimento de uma API e um banco de dados para a p
     DB_NAME=nome-do-banco
     JWT_SECRET=sua-chave-secreta
     ```
-
-## Orientações
- 
-  **:warning: Antes de começar, seu docker-compose precisa estar na versão 1.29 ou superior. [Veja aqui](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04-pt) ou [na documentação](https://docs.docker.com/compose/install/) como instalá-lo. No primeiro artigo, você pode substituir onde está com `1.26.0` por `1.29.2`.**
-
-
-  > :information_source: Rode os serviços `node` e `db` com o comando `docker-compose up -d --build`.
+4. Rode os serviços `node` e `db` com o comando `docker-compose up -d --build`.
 
   - Lembre-se de parar o `mysql` se estiver usando localmente na porta padrão (`3306`), ou adapte, caso queria fazer uso da aplicação em containers;
 
@@ -50,12 +44,10 @@ Este projeto consiste no desenvolvimento de uma API e um banco de dados para a p
   
   - **:warning: Atenção:** Caso opte por utilizar o Docker, **TODOS** os comandos disponíveis no `package.json` (npm start, npm test, npm run dev, ...) devem ser executados **DENTRO** do container, ou seja, no terminal que aparece após a execução do comando `docker exec` citado acima. 
 
-  - **:warning: Atenção:** O **git** dentro do container não vem configurado com suas credenciais. Ou faça os commits fora do container, ou configure as suas credenciais do git dentro do container.
-
   - **:warning: Atenção:** Não rode o comando npm audit fix! Ele atualiza várias dependências do projeto, e essa atualização gera conflitos com o avaliador.
 
   - ✨ **Dica:** A extensão `Remote - Containers` (que estará na seção de extensões recomendadas do VS Code) é indicada para que você possa desenvolver sua aplicação no container Docker direto no VS Code, como você faz com seus arquivos locais.
-
+5. Execute as migrações do Sequelize para criar as tabelas no banco de dados: `npx sequelize db:migrate`
   <br />
 
 ## Endpoints
@@ -98,12 +90,43 @@ Este projeto consiste no desenvolvimento de uma API e um banco de dados para a p
     "categoryIds": [1, 2]
   }
   ```
+  <br/
+    > :warning: No Headers da requisição devera conter o Authorization com o token gerado ao fazer login.
+
 - **PUT /posts/:id**: Atualiza um post pelo ID (requer autenticação). :warning: ainda não foi implementado
 - **DELETE /posts/:id**: Deleta um post pelo ID (requer autenticação). :warning: ainda não foi implementado
 
 ### Categorias
 - **GET /categories**: Lista todas as categorias.
+- Ao listar categorias com sucesso o resultado retornado deverá ser conforme exibido abaixo, com um status http `200`:
+    ```json
+    [
+      {
+          "id": 1,
+          "name": "Inovação"
+      },
+      {
+          "id": 2,
+          "name": "Escola"
+      },
+
+      /* ... */
+    ]
+    ```
+    
+    > :warning: No Headers da requisição devera conter o Authorization com o token gerado ao fazer login.
+
+
 - **POST /categories**: Cria uma nova categoria (requer autenticação).
+
+- O corpo da requisição deverá seguir o formato abaixo:
+    ```json
+    {
+        "name": "Typescript"
+    }
+    ```
+    
+    > :warning: No Headers da requisição devera conter o Authorization com o token gerado ao fazer login.
 
 ## Relações
 - **User-Posts**: Um usuário pode ter vários posts, e cada post pertence a um único usuário.
