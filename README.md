@@ -61,12 +61,43 @@ Este projeto consiste no desenvolvimento de uma API e um banco de dados para a p
 ## Endpoints
 ### Usuários
 - **POST /users**: Cria um novo usuário.
+  O corpo da requisição deverá seguir o formato abaixo:
+  ```json
+  {
+    "displayName": "Nome Ficticio",
+    "email": "nomeficticio@email.com",
+    "password": "123456",
+    "image": "http://4.bp.blogspot.com/_YA50adQ-7vQ/S1gfR_6ufpI/AAAAAAAAAAk/1ErJGgRWZDg/S45/brett.png"
+    // a imagem não é obrigatória
+  }
+  ```
 - **POST /login**: Autentica um usuário e retorna um token JWT.
+  O corpo da requisição deverá seguir o formato abaixo:
+  ```json
+  {
+    "email": "nomeficticio@email.com",
+    "password": "123456"
+  }
+  ```
+   - Se o user for criado com sucesso o resultado retornado deverá ser conforme exibido abaixo, com um status http `201`:
+    ```json
+      {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjo1LCJkaXNwbGF5TmFtZSI6InVzdWFyaW8gZGUgdGVzdGUiLCJlbWFpbCI6InRlc3RlQGVtYWlsLmNvbSIsImltYWdlIjoibnVsbCJ9LCJpYXQiOjE2MjAyNDQxODcsImV4cCI6MTYyMDY3NjE4N30.Roc4byj6mYakYqd9LTCozU1hd9k_Vw5IWKGL4hcCVG8"
+      }
+      ```
 
 ### Posts
-- **GET /posts**: Lista todos os posts.
+- **GET /posts**: Lista todos os posts. :warning: ainda não foi implementado
 - **GET /posts/:id**: Obtém um post pelo ID. :warning: ainda não foi implementado
-- **POST /posts**: Cria um novo post (requer autenticação). :warning: ainda não foi implementado
+- **POST /posts**: Cria um novo post (requer autenticação).
+  O corpo da requisição deverá seguir o formato abaixo:
+  ```json
+  {
+    "title": "Latest updates, August 1st",
+    "content": "The whole text for the blog post goes here in this key",
+    "categoryIds": [1, 2]
+  }
+  ```
 - **PUT /posts/:id**: Atualiza um post pelo ID (requer autenticação). :warning: ainda não foi implementado
 - **DELETE /posts/:id**: Deleta um post pelo ID (requer autenticação). :warning: ainda não foi implementado
 
