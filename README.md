@@ -65,7 +65,7 @@ Este projeto consiste no desenvolvimento de uma API e um banco de dados para a p
 </details>
 
 ## Instalação e Execução
-1. Clone este repositório: `git clone https://github.com/seu-usuario/api-blog.git`
+1. Clone este repositório: `git clone git@github.com:GabrielReis1/Blogs-api.git`
 2. Instale as dependências: `npm install`
 3. Configure o banco de dados no arquivo `.env`:
     ```
