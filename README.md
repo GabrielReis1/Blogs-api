@@ -14,7 +14,7 @@ Este projeto consiste no desenvolvimento de uma API e um banco de dados para a p
 - Node.js
 - Express.js
 - Sequelize (ORM)
-- PostgreSQL (ou outro banco de dados SQL de sua escolha)
+- MYSQL (ou outro banco de dados SQL de sua escolha)
 - JWT (JSON Web Tokens) para autenticação
 
 ## Orientações
@@ -84,10 +84,10 @@ Este projeto consiste no desenvolvimento de uma API e um banco de dados para a p
 
 ### Posts
 - **GET /posts**: Lista todos os posts.
-- **GET /posts/:id**: Obtém um post pelo ID. Não implementado
-- **POST /posts**: Cria um novo post (requer autenticação).
-- **PUT /posts/:id**: Atualiza um post pelo ID (requer autenticação).
-- **DELETE /posts/:id**: Deleta um post pelo ID (requer autenticação).
+- **GET /posts/:id**: Obtém um post pelo ID. :warning: ainda não foi implementado
+- **POST /posts**: Cria um novo post (requer autenticação). :warning: ainda não foi implementado
+- **PUT /posts/:id**: Atualiza um post pelo ID (requer autenticação). :warning: ainda não foi implementado
+- **DELETE /posts/:id**: Deleta um post pelo ID (requer autenticação). :warning: ainda não foi implementado
 
 ### Categorias
 - **GET /categories**: Lista todas as categorias.
